@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<setup>
+		<board>4,5</board>
+		<exit>1,4</exit>
+		<blockSize>100</blockSize>
+		<blockPadding>0</blockPadding>
+	</setup>
+	<blocks>
+		<block id="zhangfei" size="1,2" name="zhangfei" asset="zhangfei" />
+		<block id="caocao" size="2,2" name="caocao" asset="caocao" />
+		<block id="zhaoyun" size="1,2" name="zhaoyun" asset="zhaoyun" />
+		<block id="machao" size="1,2" name="machao" asset="machao" />
+		<block id="guanyu" size="2,1" name="guanyu" asset="guanyu" />
+		<block id="huangzhong" size="1,2" name="huangzhong" asset="huangzhong" />
+		<block id="zu1" size="1,1" name="zu1" asset="zu1" />
+		<block id="zu2" size="1,1" name="zu2" asset="zu2" />
+		<block id="zu3" size="1,1" name="zu3" asset="zu3" />
+		<block id="zu4" size="1,1" name="zu4" asset="zu4" />
+	</blocks>
+	
+	<originalPositions>
+		<block id="zhangfei" position="0,0" />
+		<block id="caocao" position="1,0" />
+		<block id="zhaoyun" position="3,0" />
+		<block id="machao" position="0,2" />
+		<block id="guanyu" position="1,2" />
+		<block id="huangzhong" position="3,2" />
+		<block id="zu1" position="0,4" />
+		<block id="zu2" position="1,3" />
+		<block id="zu3" position="2,3" />
+		<block id="zu4" position="3,4" />
+	</originalPositions>
+	
+</data>
