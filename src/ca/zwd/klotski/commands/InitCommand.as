@@ -1,5 +1,6 @@
 package ca.zwd.klotski.commands 
 {
+	import ca.zwd.klotski.commands.init.CalculateEmptySpacesCommand;
 	import ca.zwd.klotski.commands.init.CreateGameViewCommand;
 	import ca.zwd.klotski.commands.init.LoadGameDataCommand;
 	import ca.zwd.klotski.events.InitEvent;
@@ -14,6 +15,7 @@ package ca.zwd.klotski.commands
 		override public function execute():void
 		{
 			commandMap.mapEvent(InitEvent.START, LoadGameDataCommand, InitEvent, true);
+			commandMap.mapEvent(InitEvent.GAME_DATA_LOADED, CalculateEmptySpacesCommand, InitEvent, true);
 			commandMap.mapEvent(InitEvent.GAME_DATA_LOADED, CreateGameViewCommand, InitEvent, true);
 			
 			dispatch(new InitEvent(InitEvent.START));

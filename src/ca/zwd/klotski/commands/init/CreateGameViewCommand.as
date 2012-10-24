@@ -39,8 +39,8 @@ package ca.zwd.klotski.commands.init
 			var background:BackgroundView = injector.instantiate(BackgroundView);
 			backgroundLayer.addChild(background);
 			
-			var column:uint = uint(statics.board.split(",")[0]);
-			var row:uint = uint(statics.board.split(",")[1]);
+			var column:uint = statics.board.a;
+			var row:uint = statics.board.b;
 			
 			var x:int = 0;
 			var y:int = 0;
@@ -58,13 +58,13 @@ package ca.zwd.klotski.commands.init
 			for (var i:int = 0; i < statics.blocks.length; i++)
 			{
 				var blockVO:BlockVO = statics.blocks[i];
-				var column:uint = uint(game.positions[blockVO.id].split(",")[0]);
-				var row:uint = uint(game.positions[blockVO.id].split(",")[1]);
+				var column:uint = uint(game.positions[blockVO.id].a);
+				var row:uint = uint(game.positions[blockVO.id].b);
 				
 				var x:int = column * statics.blockSize;
 				var y:int = row * statics.blockSize;
-				var width:uint = statics.blockSize * uint(blockVO.size.split(",")[0]);
-				var height:uint = statics.blockSize * uint(blockVO.size.split(",")[1]);
+				var width:uint = statics.blockSize * uint(blockVO.size.a);
+				var height:uint = statics.blockSize * uint(blockVO.size.b);
 				
 				var block:Block = new Block();
 				block.reference = blockVO.id;

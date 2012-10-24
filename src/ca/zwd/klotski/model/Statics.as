@@ -7,7 +7,7 @@ package ca.zwd.klotski.model
 	public class Statics 
 	{
 		private var _blocks:Vector.<BlockVO>;
-		private var _board:String;
+		private var _board:Pair;
 		private var _blockSize:int;
 		private var _blockPadding:int;
 		
@@ -21,12 +21,12 @@ package ca.zwd.klotski.model
 			return _blocks || (_blocks = new Vector.<BlockVO>);
 		}
 		
-		public function get board():String 
+		public function get board():Pair 
 		{
 			return _board;
 		}
 		
-		public function set board(value:String):void 
+		public function set board(value:Pair):void 
 		{
 			_board = value;
 		}
@@ -49,6 +49,15 @@ package ca.zwd.klotski.model
 		public function set blockPadding(value:int):void 
 		{
 			_blockPadding = value;
+		}
+		
+		public function getBlockVO(id:String):BlockVO
+		{
+			for each(var vo:BlockVO in blocks)
+			{
+				if (vo.id == id) return vo;
+			}
+			return null;
 		}
 	}
 }

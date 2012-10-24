@@ -8,7 +8,7 @@ package ca.zwd.klotski.model
 	public class BlockVO
 	{
 		private var _id:String;
-		private var _size:String;
+		private var _size:Pair;
 		private var _name:String;
 		private var _asset:String;
 		
@@ -27,12 +27,12 @@ package ca.zwd.klotski.model
 			_id = value;
 		}
 		
-		public function get size():String
+		public function get size():Pair
 		{
 			return _size;
 		}
 		
-		public function set size(value:String):void
+		public function set size(value:Pair):void
 		{
 			_size = value;
 		}

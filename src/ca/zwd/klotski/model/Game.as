@@ -8,6 +8,7 @@ package ca.zwd.klotski.model
 	public class Game 
 	{
 		private var _positions:Dictionary;
+		private var _emptySpaces:Vector.<Pair>
 		
 		public function Game() 
 		{
@@ -16,14 +17,12 @@ package ca.zwd.klotski.model
 		
 		public function get positions():Dictionary 
 		{
-			return _positions || (_positions = new Dictionary());
+			return _positions ||= new Dictionary();
 		}
 		
-		public function set positions(value:Dictionary):void 
+		public function get emptySpaces():Vector.<Pair>
 		{
-			_positions = value;
+			return _emptySpaces ||= new Vector.<Pair>;
 		}
-		
 	}
-
 }

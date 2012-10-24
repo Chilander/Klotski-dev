@@ -3,6 +3,7 @@ package ca.zwd.klotski.commands.init
 	import ca.zwd.klotski.events.InitEvent;
 	import ca.zwd.klotski.model.BlockVO;
 	import ca.zwd.klotski.model.Game;
+	import ca.zwd.klotski.model.Pair;
 	import ca.zwd.klotski.model.Statics;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
@@ -35,7 +36,7 @@ package ca.zwd.klotski.commands.init
 		{
 			var data:XML = XML(_loader.data);
 			
-			statics.board = data.setup.board;
+			statics.board = Pair.split(data.setup.board, ",");
 			statics.blockSize = data.setup.blockSize;
 			statics.blockPadding = data.setup.blockPadding;
 			
@@ -44,7 +45,7 @@ package ca.zwd.klotski.commands.init
 				var block:BlockVO = new BlockVO();
 				block.id = blockData.attribute("id");
 				block.name = blockData.attribute("name");
-				block.size = blockData.attribute("size");
+				block.size = Pair.split(blockData.attribute("size"), ",");
 				block.asset = blockData.attribute("asset");
 				
 				statics.blocks.push(block);
@@ -52,7 +53,7 @@ package ca.zwd.klotski.commands.init
 			
 			for each(var positionData:XML in data.originalPositions.block)
 			{
-				game.positions[String(positionData.attribute("id"))] = positionData.attribute("position");
+				game.positions[String(positionData.attribute("id"))] = Pair.split(positionData.attribute("position"), ",");
 			}
 			
 			dispatch(new InitEvent(InitEvent.GAME_DATA_LOADED));
