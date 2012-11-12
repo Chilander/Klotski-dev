@@ -1,5 +1,8 @@
 package ca.zwd.klotski.views.mediators 
 {
+	import ca.zwd.klotski.events.GameEvent;
+	import ca.zwd.klotski.model.Game;
+	import ca.zwd.klotski.views.BackgroundView;
 	import org.robotlegs.mvcs.Mediator;
 	
 	/**
@@ -8,11 +11,14 @@ package ca.zwd.klotski.views.mediators
 	 */
 	public class BackgroundViewMediator extends Mediator 
 	{
+		[Inject]
+		public var game:Game;
 		
-		public function BackgroundViewMediator() 
+		[Inject]
+		public var backgroundView:BackgroundView;
+		
+		override public function onRegister():void
 		{
 		}
-		
 	}
-
 }

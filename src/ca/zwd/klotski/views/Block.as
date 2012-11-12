@@ -26,6 +26,8 @@ package ca.zwd.klotski.views
 		
 		public function draw(width:uint, height:uint, color:uint, alpha:Number):void
 		{
+			this.graphics.lineStyle(0, 0x000000, 1);
+			this.graphics.drawRect(0, 0, width, height);
 			this.graphics.beginFill(color, alpha);
 			this.graphics.drawRect(0, 0, width, height);
 			this.graphics.endFill();

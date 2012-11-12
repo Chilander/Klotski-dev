@@ -10,6 +10,8 @@ package ca.zwd.klotski
 	import ca.zwd.klotski.views.BlocksView;
 	import ca.zwd.klotski.views.mediators.BackgroundViewMediator;
 	import ca.zwd.klotski.views.mediators.BlocksViewMediator;
+	import ca.zwd.klotski.views.mediators.OverlayViewMediator;
+	import ca.zwd.klotski.views.OverlayView;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
 	import org.robotlegs.mvcs.Context;
@@ -22,6 +24,7 @@ package ca.zwd.klotski
 	{
 		private var _backgroundLayer:Sprite;
 		private var _blockLayer:Sprite;
+		private var _overlayLayer:Sprite;
 		private var _mouseLayer:Sprite;
 		
 		public function KlotskiContext(contextView:DisplayObjectContainer) 
@@ -44,10 +47,12 @@ package ca.zwd.klotski
 		{
 			_backgroundLayer = new Sprite();
 			_blockLayer = new Sprite();
+			_overlayLayer = new Sprite();
 			_mouseLayer = new Sprite();
 			
 			contextView.addChild(_backgroundLayer);
 			contextView.addChild(_blockLayer);
+			contextView.addChild(_overlayLayer);
 			contextView.addChild(_mouseLayer);
 		}
 		
@@ -58,6 +63,7 @@ package ca.zwd.klotski
 			
 			injector.mapValue(Sprite, _backgroundLayer, "backgrounLayer");
 			injector.mapValue(Sprite, _blockLayer, "blockLayer");
+			injector.mapValue(Sprite, _overlayLayer, "overlayLayer");
 			injector.mapValue(Sprite, _mouseLayer, "mouseLayer");
 		}
 		
@@ -71,6 +77,7 @@ package ca.zwd.klotski
 		{
 			mediatorMap.mapView(BackgroundView, BackgroundViewMediator);
 			mediatorMap.mapView(BlocksView, BlocksViewMediator);
+			mediatorMap.mapView(OverlayView, OverlayViewMediator);
 		}
 	}
 }

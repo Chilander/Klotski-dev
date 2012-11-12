@@ -6,7 +6,7 @@ package ca.zwd.klotski.views
 	 * ...
 	 * @author Wandi Zhang
 	 */
-	public class BlocksView extends Sprite 
+	public class BlocksView extends BaseView 
 	{
 		public function addBlock(block:Block):void
 		{

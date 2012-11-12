@@ -30,70 +30,76 @@ package ca.zwd.klotski.commands
 			var size:Pair = statics.getBlockVO(id).size;
 			var board:Pair = statics.board;
 			
-			/*
-			var spaces:Object = _getPossibleSpaces(position, size);
+			var spaces:Object = _getSideSpaces(position, size);
 			
-			var available:Array = [];
-			for each(var side:Array in spaces)
+			var possible:Vector.<Pair> = new Vector.<Pair>();
+			for each(var side:Vector.<Pair> in spaces)
 			{
-				if (_checkAvailability(side)) available.push(side);
+				possible = possible.concat(_getPossibleSpaces(side, game.emptySpaces));
 			}
-			*/
 			
-			//Marche pas !!!
-			
-			trace("hahaha");
-			
+			game.availableMoves = possible;
+			dispatch(new GameEvent(GameEvent.MOVE_CALCULATED));
 		}
-		/*
-		private function _checkAvailability(side:Array):Boolean
+		
+		private function _getPossibleSpaces(available:Vector.<Pair>, empty:Vector.<Pair>):Vector.<Pair>
 		{
-			for(var id:String in game.positions)
+			var returned:Vector.<Pair> = new Vector.<Pair>();
+			for each(var pair:Pair in available)
 			{
-				var size:Array = _getBlockVO(id).size.split(",");
-				var columnA:int = game.positions[id].split(",")[0];
-				var rowA:int = game.positions[id].split(",")[1];
-				var columnB:int = columnA + size[0];
-				var rowB:int = rowA + size[0];
-				for each(var space:Array in side)
+				for each(var emptyPair:Pair in empty)
 				{
-					if (space[0] >= columnA && space[0] <= columnB && space[1] >= rowA && space[1] <= rowB) return false;
+					if (pair.a == emptyPair.a && pair.b == emptyPair.b) 
+					{
+						returned.push(pair);
+					}
 				}
 			}
-			return true;
+			return returned;
 		}
-		private function _getPossibleSpaces(position:Vector.<int>, size:Vector.<int>):Object
+		
+		private function _getSideSpaces(position:Pair, size:Pair):Object
 		{
 			var spaces:Object = {};
 			var i:uint;
 			
 			//top
-			spaces.top = [];
-			for (i = 0; i < size[0]; i++)
+			spaces.top = new Vector.<Pair>();
+			for (i = 0; i < size.a; i++)
 			{
-				spaces.top.push([position[0] + i, position[1] - 1]); 
+				spaces.top.push(new Pair(position.a + i, position.b - 1)); 
 			}
 			//bottom
-			spaces.bottom = [];
-			for (i = 0; i < size[0]; i++)
+			spaces.bottom = new Vector.<Pair>();
+			for (i = 0; i < size.a; i++)
 			{
-				spaces.bottom.push([position[0] + i, position[1] + size[1]]); 
+				spaces.bottom.push(new Pair(position.a + i, position.b + size.b)); 
 			}
 			//left
-			spaces.left = [];
-			for (i = 0; i < size[1]; i++)
+			spaces.left = new Vector.<Pair>();
+			for (i = 0; i < size.b; i++)
 			{
-				spaces.left.push([position[0] - 1, position[1] + i]); 
+				spaces.left.push(new Pair(position.a - 1, position.b + i)); 
 			}
 			//right
-			spaces.right = [];
-			for (i = 0; i < size[1]; i++)
+			spaces.right = new Vector.<Pair>();
+			for (i = 0; i < size.b; i++)
 			{
-				spaces.right.push([position[0] + size[0], position[1] + i]); 
+				spaces.right.push(new Pair(position.a + size.a, position.b + i)); 
+			}
+			
+			//if the piece is a square of 1 x 1, then we also includes corners
+			if (size.a == 1 && size.b == 1) 
+			{
+				var corners:Vector.<Pair> = new Vector.<Pair>();
+				if (position.a - 1 >= 0 && position.b - 1 >= 0) corners.push(new Pair(position.a - 1, position.b - 1));
+				if (position.a + 1 >= 0 && position.b - 1 >= 0) corners.push(new Pair(position.a + 1, position.b - 1));
+				if (position.a - 1 >= 0 && position.b + 1 >= 0) corners.push(new Pair(position.a - 1, position.b + 1));
+				if (position.a + 1 >= 0 && position.b + 1 >= 0) corners.push(new Pair(position.a + 1, position.b + 1));
+				spaces.corners = corners;
 			}
 			
 			return spaces;
 		}
-		*/
 	}
 }

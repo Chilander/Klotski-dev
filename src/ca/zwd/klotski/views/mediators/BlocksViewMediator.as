@@ -18,6 +18,8 @@ package ca.zwd.klotski.views.mediators
 		override public function onRegister():void
 		{
 			blocksView.addEventListener(MouseEvent.CLICK, _onBlockClicked);
+			
+			eventMap.mapListener(eventDispatcher, GameEvent.MOVE_CALCULATED, _onMoveCalculated);
 		}
 		
 		override public function onRemove():void
@@ -32,6 +34,11 @@ package ca.zwd.klotski.views.mediators
 			var e:GameEvent = new GameEvent(GameEvent.BLOCK_CLICKED);
 			e.reference = block.reference;
 			dispatch(e);
+		}
+		
+		private function _onMoveCalculated(event:GameEvent):void
+		{
+			trace("hohoho");
 		}
 	}
 }

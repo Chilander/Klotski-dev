@@ -9,6 +9,7 @@ package ca.zwd.klotski.events
 	public class GameEvent extends Event 
 	{
 		public static const BLOCK_CLICKED:String = "GameEvent_BLOCK_CLICKED";
+		public static const MOVE_CALCULATED:String = "GameEvent_MOVE_CALCULATED";
 		
 		public var reference:*;
 		
