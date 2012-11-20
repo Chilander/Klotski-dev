@@ -1,5 +1,6 @@
 package ca.zwd.klotski.views
 {
+	import ca.zwd.klotski.model.BlockVO;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;

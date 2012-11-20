@@ -20,6 +20,11 @@ package ca.zwd.klotski.model
 			return new Pair(s.split(separator)[0], s.split(separator)[1]);
 		}
 		
+		public function toString():String
+		{
+			return "[" + this.a + "," + this.b + "]";
+		}
+		
 	}
 
 }

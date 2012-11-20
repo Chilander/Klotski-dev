@@ -10,6 +10,8 @@ package ca.zwd.klotski.events
 	{
 		public static const BLOCK_CLICKED:String = "GameEvent_BLOCK_CLICKED";
 		public static const MOVE_CALCULATED:String = "GameEvent_MOVE_CALCULATED";
+		public static const MOVE_BLOCK:String = "GameEvent_MOVE_BLOCK";
+		public static const MOVE_COMPLETED:String = "GameEvent_MOVE_COMPLETE";
 		
 		public var reference:*;
 		

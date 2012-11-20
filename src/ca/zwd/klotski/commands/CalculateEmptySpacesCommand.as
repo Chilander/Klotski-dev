@@ -1,4 +1,4 @@
-package ca.zwd.klotski.commands.init 
+package ca.zwd.klotski.commands 
 {
 
 	import ca.zwd.klotski.model.Game;

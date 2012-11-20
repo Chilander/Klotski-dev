@@ -1,6 +1,6 @@
 package ca.zwd.klotski.commands 
 {
-	import ca.zwd.klotski.commands.init.CalculateEmptySpacesCommand;
+	import ca.zwd.klotski.commands.CalculateEmptySpacesCommand;
 	import ca.zwd.klotski.commands.init.CreateGameViewCommand;
 	import ca.zwd.klotski.commands.init.LoadGameDataCommand;
 	import ca.zwd.klotski.events.InitEvent;

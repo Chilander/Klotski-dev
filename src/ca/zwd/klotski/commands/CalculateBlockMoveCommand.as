@@ -39,6 +39,7 @@ package ca.zwd.klotski.commands
 			}
 			
 			game.availableMoves = possible;
+			game.currentSelectedBlockId = id;
 			dispatch(new GameEvent(GameEvent.MOVE_CALCULATED));
 		}
 		

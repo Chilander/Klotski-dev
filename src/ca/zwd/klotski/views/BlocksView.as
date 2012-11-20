@@ -12,7 +12,6 @@ package ca.zwd.klotski.views
 		{
 			addChild(block);
 		}
-		
 	}
 
 }

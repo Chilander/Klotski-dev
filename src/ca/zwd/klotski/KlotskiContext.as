@@ -1,9 +1,12 @@
 package ca.zwd.klotski 
 {
 	import ca.zwd.klotski.commands.CalculateBlockMoveCommand;
+	import ca.zwd.klotski.commands.CalculateEmptySpacesCommand;
 	import ca.zwd.klotski.commands.InitCommand;
+	import ca.zwd.klotski.commands.MoveBlockCommand;
 	import ca.zwd.klotski.events.GameEvent;
 	import ca.zwd.klotski.events.InitEvent;
+	import ca.zwd.klotski.factories.BlockFactory;
 	import ca.zwd.klotski.model.Game;
 	import ca.zwd.klotski.model.Statics;
 	import ca.zwd.klotski.views.BackgroundView;
@@ -60,6 +63,7 @@ package ca.zwd.klotski
 		{
 			injector.mapSingleton(Statics);
 			injector.mapSingleton(Game);
+			injector.mapSingleton(BlockFactory);
 			
 			injector.mapValue(Sprite, _backgroundLayer, "backgrounLayer");
 			injector.mapValue(Sprite, _blockLayer, "blockLayer");
@@ -71,6 +75,8 @@ package ca.zwd.klotski
 		{
 			commandMap.mapEvent(InitEvent.INIT, InitCommand, InitEvent, true);
 			commandMap.mapEvent(GameEvent.BLOCK_CLICKED, CalculateBlockMoveCommand, GameEvent, false);
+			commandMap.mapEvent(GameEvent.MOVE_BLOCK, MoveBlockCommand, GameEvent, false);
+			commandMap.mapEvent(GameEvent.MOVE_COMPLETED, CalculateEmptySpacesCommand, GameEvent, false);
 		}
 		
 		private function _mapMediators():void

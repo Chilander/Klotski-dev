@@ -1,5 +1,6 @@
 package ca.zwd.klotski.commands.init 
 {
+	import ca.zwd.klotski.factories.BlockFactory;
 	import ca.zwd.klotski.model.BlockVO;
 	import ca.zwd.klotski.model.Game;
 	import ca.zwd.klotski.model.Pair;
@@ -23,6 +24,9 @@ package ca.zwd.klotski.commands.init
 		
 		[Inject]
 		public var statics:Statics;
+		
+		[Inject]
+		public var factory:BlockFactory;
 		
 		[Inject(name = "backgrounLayer")]
 		public var backgroundLayer:Sprite;
@@ -68,22 +72,7 @@ package ca.zwd.klotski.commands.init
 			for (var i:int = 0; i < statics.blocks.length; i++)
 			{
 				var blockVO:BlockVO = statics.blocks[i];
-				var column:uint = uint(game.positions[blockVO.id].a);
-				var row:uint = uint(game.positions[blockVO.id].b);
-				
-				var x:int = column * statics.blockSize;
-				var y:int = row * statics.blockSize;
-				var width:uint = statics.blockSize * uint(blockVO.size.a);
-				var height:uint = statics.blockSize * uint(blockVO.size.b);
-				
-				var block:Block = new Block();
-				block.reference = blockVO.id;
-				block.draw(width, height, Math.round(Math.random() * 0xFFFFFF), 1);
-				block.label = blockVO.name.toUpperCase();
-				
-				blocksView.addBlock(block);
-				block.x = x;
-				block.y = y;
+				blocksView.addBlock(factory.getBlock(blockVO));
 			}
 		}
 		

@@ -10,10 +10,10 @@ package ca.zwd.klotski.model
 		private var _positions:Dictionary;
 		private var _emptySpaces:Vector.<Pair>;
 		private var _availableMoves:Vector.<Pair>;
+		private var _currentSelectedBlockId:String;
 		
 		public function Game() 
 		{
-			
 		}
 		
 		public function get positions():Dictionary 
@@ -44,6 +44,16 @@ package ca.zwd.klotski.model
 		public function set availableMoves(value:Vector.<Pair>):void 
 		{
 			_availableMoves = value;
+		}
+		
+		public function get currentSelectedBlockId():String 
+		{
+			return _currentSelectedBlockId;
+		}
+		
+		public function set currentSelectedBlockId(value:String):void 
+		{
+			_currentSelectedBlockId = value;
 		}
 	}
 }
